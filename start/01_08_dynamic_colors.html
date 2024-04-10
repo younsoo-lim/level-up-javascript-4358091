@@ -18,7 +18,48 @@
 
   <script>
     // Write your code here
+    const blueNode = document.querySelector('#blue')
+    const pinkNode = document.querySelector('#pink')
+    const greenNode = document.querySelector('#green')
 
+    // ==== Option 1: same funcitons are repeated
+    // function makeBodyBlue() {
+    //   document.body.style.background = "#0f62fe"
+    // }
+    // function makeBodyPink() {
+    //   document.body.style.background = "#ff7eb6"
+    // }
+    // function makeBodyGreen() {
+    //   document.body.style.background = "#42be65"
+    // }
+
+    // blueNode.addEventListener('click', makeBodyBlue);
+    // pinkNode.addEventListener('click', makeBodyPink);
+    // greenNode.addEventListener('click', makeBodyGreen);
+
+    // ==== Option 2
+    // function changeColor(color) {
+    //   document.body.style.background = color;
+    // }
+
+    // blueNode.addEventListener('click', () => changeColor("#0f62fe"));
+    // pinkNode.addEventListener('click', () => changeColor("#ff7eb6"));
+    // greenNode.addEventListener('click', () => changeColor("#42be65"));
+
+    // ==== Option 3
+    function changeColor(color) {
+      return function () {       // to make a closure function, add return function()
+        document.body.style.background = color;
+      }
+    }
+
+    const bgColorBlue = changeColor("#0f62fe");
+    const bgColorPink = changeColor("#ff7eb6");
+    const bgColorGreen = changeColor("#42be65");
+
+    blueNode.addEventListener('click', bgColorBlue);
+    pinkNode.addEventListener('click', bgColorPink);
+    greenNode.addEventListener('click', bgColorGreen);        
   </script>
 </body>
 
